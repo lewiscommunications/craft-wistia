@@ -1,4 +1,6 @@
-<input type="hidden" name="{{ name }}">
+{% if name is defined and name %}
+	<input type="hidden" name="{{ name }}" value="">
+{% endif -%}
 
 <div class="elementselect" id="{{ name }}">
 	<div class="elements">
