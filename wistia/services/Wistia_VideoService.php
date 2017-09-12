@@ -84,15 +84,21 @@ class Wistia_VideoService extends BaseApplicationComponent
 			$embed = $this->getEmbed($hashedId, $params);
 
 			$cachedVideo = craft()->cache->get($cacheKey);
+			$video = $cachedVideo ?
+				$cachedVideo :
+				current(
+					$this->getApiData('medias.json', array(
+						'hashed_id' => $hashedId
+					))
+				);
 
-			// Cache Wistia API data
-			if ($cachedVideo) {
-				$video = $cachedVideo;
-			} else {
-				$video = current($this->getApiData('medias.json', array(
-					'hashed_id' => $hashedId
-				)));
+			// Does a video exist?
+			if (! $video) {
+				continue;
+			}
 
+			// Is there a cached video?
+			if (! $cachedVideo) {
 				$video['hashedId'] = $hashedId;
 
 				// Remove old embed code
@@ -131,6 +137,7 @@ class Wistia_VideoService extends BaseApplicationComponent
 
 				$video['name'] = htmlspecialchars_decode($video['name']);
 
+				// Cache video for defined time period
 				craft()->cache
 					->set($cacheKey, $video, (int) craft()->plugins
 						->getPlugin('wistia')
