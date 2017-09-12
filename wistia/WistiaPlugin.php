@@ -29,22 +29,22 @@ class WistiaPlugin extends BasePlugin
 
 	public function getDeveloper()
 	{
-		return 'Caddis';
+		return 'Lewis Communications';
 	}
 
 	public function getDeveloperUrl()
 	{
-		return 'https://www.caddis.co';
+		return 'http://www.lewiscommunications.com';
 	}
 
 	public function getDocumentationUrl()
 	{
-		return 'https://github.com/caddis/craft-wistia';
+		return 'https://github.com/lewiscommunications/craft-wistia';
 	}
 
 	public function getReleaseFeedUrl()
 	{
-		return 'https://raw.githubusercontent.com/caddis/craft-wistia/master/releases.json';
+		return 'https://raw.githubusercontent.com/lewiscommunications/craft-wistia/master/releases.json';
 	}
 
 	protected function defineSettings()

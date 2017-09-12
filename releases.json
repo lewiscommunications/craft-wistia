@@ -1,7 +1,7 @@
 [
 	{
 		"version": "0.3.0",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.0.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.0.zip",
 		"date": "2016-05-27T13:56:24",
 		"notes": [
 			"[Added] Initial release."
@@ -9,7 +9,7 @@
 	},
 	{
 		"version": "0.3.1",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.1.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.1.zip",
 		"date": "2016-05-30T23:26:16",
 		"notes": [
 			"[Fixed] Resolved invalid reference to hashed_id in input template."
@@ -17,7 +17,7 @@
 	},
 	{
 		"version": "0.3.2",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.2.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.2.zip",
 		"date": "2016-06-02T11:06:10-05:00",
 		"notes": [
 			"[Added] Added releases.json file."
@@ -25,7 +25,7 @@
 	},
 	{
 		"version": "0.3.3",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.3.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.3.zip",
 		"date": "2016-06-02T11:30:25-05:00",
 		"notes": [
 			"[Fixed] Fixed plugin version number."
@@ -33,7 +33,7 @@
 	},
 	{
 		"version": "0.3.4",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.4.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.4.zip",
 		"date": "2016-06-27T14:58:31+00:00",
 		"notes": [
 			"[Fixed] Fixed thumbnail cache directory issue."
@@ -41,7 +41,7 @@
 	},
 	{
 		"version": "0.3.5",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.5.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.5.zip",
 		"date": "2016-08-16T18:06:00+00:00",
 		"notes": [
 			"[Improved] Fieldtype returns actual value when no video is selected."
@@ -49,7 +49,7 @@
 	},
 	{
 		"version": "0.3.6",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.6.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.6.zip",
 		"date": "2016-10-14T19:17:21+00:00",
 		"notes": [
 			"[Fixed] Fixed an issue where only videos from one project were showing when more than one project was selected."
@@ -57,7 +57,7 @@
 	},
 	{
 		"version": "0.3.7",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.7.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.7.zip",
 		"date": "2017-04-13T17:38:05+00:00",
 		"notes": [
 			"[Improved] Updated deprecated template methods."
@@ -65,7 +65,7 @@
 	},
 	{
 		"version": "0.3.8",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.8.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.8.zip",
 		"date": "2017-06-27T17:01:28+00:00",
 		"notes": [
 			"[Added] Added thumbnail template tag."
@@ -73,7 +73,7 @@
 	},
 	{
 		"version": "0.3.9",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.3.9.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.3.9.zip",
 		"date": "2017-07-20T22:38:10+00:00",
 		"notes": [
 			"[Added] Added external image pre-cache on save entry."
@@ -81,7 +81,7 @@
 	},
 	{
 		"version": "0.4.0",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.4.0.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.4.0.zip",
 		"date": "2017-07-27T19:16:58+00:00",
 		"notes": [
 			"[Added] Added Import plugin compatibility."
@@ -89,7 +89,7 @@
 	},
 	{
 		"version": "0.4.1",
-		"downloadUrl": "https://github.com/caddis/craft-wistia/archive/0.4.1.zip",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.4.1.zip",
 		"date": "2017-08-03T21:22:19+00:00",
 		"notes": [
 			"[Fixed] Fixed empty .csv import column issue."
