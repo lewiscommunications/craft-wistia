@@ -69,6 +69,32 @@ class WistiaPlugin extends BasePlugin
 		));
 	}
 
+	public function prepSettings($settings)
+	{
+		$projects = craft()->httpSession->get('wistiaProjects');
+
+		if ($projects) {
+			// Remove video session cache in each project
+			foreach($projects as $id => $name) {
+				$projectKey = 'wistia' . $id . 'Videos';
+
+				if (craft()->httpSession->get($projectKey)) {
+					craft()->httpSession->remove($projectKey);
+				}
+			}
+
+			// Remove project session cache
+			craft()->httpSession->remove('wistiaProjects');
+		}
+
+		// Remove all videos session cache
+		if (craft()->httpSession->get('wistiaAllVideos')) {
+			craft()->httpSession->remove('wistiaAllVideos');
+		}
+
+		return $settings;
+	}
+
 	public function registerCachePaths()
 	{
 		$cachePath = $_SERVER['DOCUMENT_ROOT'] .

@@ -177,12 +177,6 @@ class Wistia_VideoService extends BaseApplicationComponent
 	 */
 	public function getVideosByProjectId($projects)
 	{
-		$cacheString = is_array($projects) ? implode('-', $projects) : '-' . $projects;
-
-		if (($videos = craft()->httpSession->get('wistiaProjectVideos' . $cacheString, false)) !== false) {
-			return $videos;
-		}
-
 		$videos = array();
 
 		// Add videos from each project
@@ -191,6 +185,7 @@ class Wistia_VideoService extends BaseApplicationComponent
 			try {
 				$projectNames = $this->getProjects();
 			} catch (Exception $e) {
+				// TODO: lang method is an old EE method
 				throw new Exception(lang('error_no_projects'), 1, $e);
 			}
 
@@ -200,6 +195,14 @@ class Wistia_VideoService extends BaseApplicationComponent
 			}
 
 			foreach ($projects as $project) {
+				$cachedVideos = craft()->httpSession->get('wistia' . $project . 'Videos');
+
+				if ($cachedVideos) {
+					$videos = array_merge($videos, $cachedVideos);
+
+					continue;
+				}
+
 				$params = array(
 					'sort_by' => 'name',
 					'project_id' => $project
@@ -209,10 +212,11 @@ class Wistia_VideoService extends BaseApplicationComponent
 				try {
 					$data = $this->getApiData('medias.json', $params);
 				} catch (Exception $e) {
+					// TODO: lang method is an old EE method
 					throw new Exception(lang('error_no_video_list') . $project, 5, $e);
 				}
 
-				// Skip empty datasets
+				// Skip empty data sets
 				if (! is_array($data)) {
 					continue;
 				}
@@ -223,19 +227,27 @@ class Wistia_VideoService extends BaseApplicationComponent
 
 					$videos[$hashedId] = $name;
 				}
+
+				craft()->httpSession->add('wistia' . $project . 'Videos', $videos);
 			}
 		} else {
-			foreach ($this->getApiData('medias.json') as $video) {
-				$hashedId = WistiaHelper::getValue('hashed_id', $video);
-				$name = htmlspecialchars_decode(WistiaHelper::getValue('name', $video));
+			$cachedVideos = craft()->httpSession->get('wistiaAllVideos', $videos);
 
-				$videos[$hashedId] = $name;
+			if ($cachedVideos) {
+				$videos = array_merge($videos, $cachedVideos);
+			} else {
+				foreach ($this->getApiData('medias.json') as $video) {
+					$hashedId = WistiaHelper::getValue('hashed_id', $video);
+					$name = htmlspecialchars_decode(WistiaHelper::getValue('name', $video));
+
+					$videos[$hashedId] = $name;
+
+					craft()->httpSession->add('wistiaAllVideos', $videos);
+				}
 			}
 		}
 
 		asort($videos);
-
-		craft()->httpSession->add('wistiaProjectVideos' . $cacheString, $videos);
 
 		return $videos;
 	}
@@ -252,7 +264,9 @@ class Wistia_VideoService extends BaseApplicationComponent
 			throw new Exception(lang('error_no_api_key'), 0);
 		}
 
-		if ($projects = craft()->httpSession->get('wistiaProjects', false)) {
+		$projects = craft()->httpSession->get('wistiaProjects', false);
+
+		if ($projects) {
 			return $projects;
 		}
 
@@ -272,7 +286,7 @@ class Wistia_VideoService extends BaseApplicationComponent
 			$projects[WistiaHelper::getValue('id', $project)] = WistiaHelper::getValue('name', $project);
 		}
 
-		craft()->httpSession->add('projects', $projects);
+		craft()->httpSession->add('wistiaProjects', $projects);
 
 		return $projects;
 	}
@@ -346,6 +360,7 @@ class Wistia_VideoService extends BaseApplicationComponent
 		$data = $this->send($apiUrl);
 
 		if ($data === false) {
+			// TODO: lang is an old EE method
 			throw new Exception(lang('error_remote_file') . $apiUrl, 3);
 		}
 
