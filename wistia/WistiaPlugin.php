@@ -4,7 +4,7 @@ namespace Craft;
 class WistiaPlugin extends BasePlugin
 {
 	private $name = 'Wistia';
-	private $version = '0.4.1';
+	private $version = '0.4.2';
 	private $description = 'Powerful fieldtype and template tags for Wistia videos.';
 
 	public function getName()
@@ -67,6 +67,32 @@ class WistiaPlugin extends BasePlugin
 		return craft()->templates->render('wistia/plugin/settings', array(
 			'settings' => $this->getSettings()
 		));
+	}
+
+	public function prepSettings($settings)
+	{
+		$projects = craft()->httpSession->get('wistiaProjects');
+
+		if ($projects) {
+			// Remove video session cache in each project
+			foreach($projects as $id => $name) {
+				$projectKey = 'wistia' . $id . 'Videos';
+
+				if (craft()->httpSession->get($projectKey)) {
+					craft()->httpSession->remove($projectKey);
+				}
+			}
+
+			// Remove project session cache
+			craft()->httpSession->remove('wistiaProjects');
+		}
+
+		// Remove all videos session cache
+		if (craft()->httpSession->get('wistiaAllVideos')) {
+			craft()->httpSession->remove('wistiaAllVideos');
+		}
+
+		return $settings;
 	}
 
 	public function registerCachePaths()

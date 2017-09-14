@@ -94,5 +94,15 @@
 		"notes": [
 			"[Fixed] Fixed empty .csv import column issue."
 		]
+	},
+	{
+		"version": "0.4.2",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.4.2.zip",
+		"date": "2017-09-14T21:06:13+00:00",
+		"notes": [
+			"[Fixed] Fixed issue where required Wistia fields were not validating.",
+			"[Fixed] Fixed issue where nonexistent hashed ids stopped page load.",
+			"[Added] Added http session cache clearing on plugin settings save."
+		]
 	}
 ]

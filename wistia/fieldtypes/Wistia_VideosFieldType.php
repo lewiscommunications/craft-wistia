@@ -54,22 +54,22 @@ class Wistia_VideosFieldType extends BaseFieldType
 					WistiaPlugin::log('Wistia video thumbnail with a hashed id of ' . $video['hashedId']. ' failed to load.', LogLevel::Warning);
 				}
 			}
+
+			$hashedIds = json_encode($hashedIds);
 		}
 
-		return json_encode($hashedIds);
+		return $hashedIds;
 	}
 
 	/**
 	 * Modify stored data for output
 	 *
-	 * @param string $value
-	 * @return object
+	 * @param mixed $value
+	 * @return mixed
 	 */
 	public function prepValue($value)
 	{
-		$value = json_decode($value);
-
-		return $value ? craft()->wistia_video->getVideos($value) : $value;
+		return ! empty($value) ? craft()->wistia_video->getVideos(json_decode($value)) : $value;
 	}
 
 	/**
