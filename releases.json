@@ -104,5 +104,13 @@
 			"[Fixed] Fixed issue where nonexistent hashed ids stopped page load.",
 			"[Added] Added http session cache clearing on plugin settings save."
 		]
+	},
+	{
+		"version": "0.4.3",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.4.3.zip",
+		"date": "2017-10-19T20:53:17+00:00",
+		"notes": [
+			"[Added] Added error handling message when no videos are available."
+		]
 	}
 ]
