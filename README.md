@@ -20,7 +20,7 @@ To output videos on the front-end, use your field's handle and append the `getVi
 ```twig
 {% for block in entry.matrixBlock %}
     {% if block.type == 'videos' %}
-        {% for video in block.videos %}
+        {% for video in block.videos.getVideos() %}
             <h3>{{ video.name }}</h3>
             <img src="{{ video.preview.getUrl }}" alt="{{ video.name }}">
         {% endfor %}
