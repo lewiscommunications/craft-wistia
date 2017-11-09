@@ -112,5 +112,13 @@
 		"notes": [
 			"[Added] Added error handling message when no videos are available."
 		]
+	},
+	{
+		"version": "0.4.4",
+		"downloadUrl": "https://github.com/lewiscommunications/craft-wistia/archive/0.4.4.zip",
+		"date": "2017-11-09T21:29:49+00:00",
+		"notes": [
+			"[Fixed] Fixed issue where video error was displaying when videos were available."
+		]
 	}
 ]
